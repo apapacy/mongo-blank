@@ -64,14 +64,15 @@ class MyDatabase extends Core {
 try {
 var myDb = new MyDatabase({ database: 'houses_test' });
 
-myDb.connect().then(() => myDb.Houses.insert({
-  name: 'My House',
-  cars: [{
-    make: 'Audi',
-    model: 'A4',
-    colour: { r: 0, g: 0, b: 0 }
-  }]
-}))
+myDb.connect().then(async function(){
+  for (var i:number=Number(0); i<1000000;i++) await myDb.Houses.insert({
+    name: 'My House-' + i.toString(),
+    cars: [{
+      make: 'Audi',
+      model: 'A4',
+      colour: { r: 0, g: 0, b: 0 }
+    }]
+})})
   .then(() => myDb.Houses.get(),err=>console.log(err))
   .then((house) => {
   house.addCar('Audi', 'S4', { r: 255, g: 255, b: 255 });

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require("babel-register")({
+/*require("babel-register")({
   presets: [
     'stage-0',
     'stage-3',
@@ -25,7 +25,7 @@ require("babel-register")({
        'transform-es2015-classes',
        "transform-strict-mode"
   ]
-});
+});*/
 require('ts-node').register({
   //fast?: boolean
   //compiler?: string

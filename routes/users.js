@@ -16,7 +16,7 @@ kittySchema.methods.speak = function () {
   console.log(greeting);
   }
 var Kitten = mongoose.model('Kitten', kittySchema);
-router.get('/:name', async function(req, res, next) {
+router.get('/:name',  function(req, res, next) {
 try {
     for (var i =0; i<10000; i++) {
     var fluffy = new Kitten({ name:req.params.name + i, cats:i, test:i });
