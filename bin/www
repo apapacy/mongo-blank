@@ -6,13 +6,24 @@ require("babel-register")({
     'stage-3',
     'es2015',
     'es2016',
-    [
-      'transform-runtime',
-      {
-        'polyfill': false,
-        'regenerator': true
-      }
-    ]
+  ],
+  "plugins": [
+    "transform-runtime",
+    "add-module-exports",
+//       ["transform-runtime", {
+//         "polyfill": false,
+//         "regenerator": false
+//       }],
+       "transform-es2015-for-of",
+       "syntax-object-rest-spread",
+       "transform-es2015-parameters",
+       "transform-object-rest-spread",
+       "transform-async-to-generator",
+       "transform-es2015-spread",
+       "transform-es2015-destructuring",
+       "transform-es2015-modules-commonjs",
+       'transform-es2015-classes',
+       "transform-strict-mode"
   ]
 });
 require('ts-node').register({
@@ -21,11 +32,14 @@ require('ts-node').register({
   //noProject?: boolean
   //project?: string
   //ignoreWarnings?: Array<number | string>
-  disableWarnings: true
+  //disableWarnings: true
   //getFile?: (fileName: string) => string
   //getVersion?: (fileName: string) => string
   //getFileExists?: (fileName: string) => boolean
-  //compilerOptions?: any
+  compilerOptions: {
+    'experimentalDecorators': true,
+    'target': 'es6'
+  }
 });
 /**
  * Module dependencies.

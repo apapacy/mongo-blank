@@ -1,4 +1,4 @@
-require('./test.ts');
+require('./app/models/Customer.ts');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
