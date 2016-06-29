@@ -1,15 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-try {
 mongoose.connect('mongodb://localhost/test');
-} catch(ex){}
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("we're connected!");
-});
-// getting-started.js
+db.once('open', function(){console.log("we're connected!");});
 var kittySchema = mongoose.Schema({
   name: String,
   cats: Number
@@ -21,14 +16,9 @@ kittySchema.methods.speak = function () {
   console.log(greeting);
   }
 var Kitten = mongoose.model('Kitten', kittySchema);
-
-
-
-/* GET users listing. */
 router.get('/:name', async function(req, res, next) {
 try {
-
-    for (var i =0; i<100000; i++) {
+    for (var i =0; i<10000; i++) {
     var fluffy = new Kitten({ name:req.params.name + i, cats:i, test:i });
     //fluffy.speak(); // "Meow name is fluffy"
     fluffy.save();

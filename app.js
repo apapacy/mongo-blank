@@ -1,4 +1,3 @@
-async function www(){}
 require('./test.ts');
 var express = require('express');
 var path = require('path');

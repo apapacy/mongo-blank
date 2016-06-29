@@ -1,9 +1,32 @@
 #!/usr/bin/env node
 
 require("babel-register")({
-  presets: ['stage-3']
+  presets: [
+    'stage-0',
+    'stage-3',
+    'es2015',
+    'es2016',
+    [
+      'transform-runtime',
+      {
+        'polyfill': false,
+        'regenerator': true
+      }
+    ]
+  ]
 });
-require('ts-node/register');
+require('ts-node').register({
+  //fast?: boolean
+  //compiler?: string
+  //noProject?: boolean
+  //project?: string
+  //ignoreWarnings?: Array<number | string>
+  disableWarnings: true
+  //getFile?: (fileName: string) => string
+  //getVersion?: (fileName: string) => string
+  //getFileExists?: (fileName: string) => boolean
+  //compilerOptions?: any
+});
 /**
  * Module dependencies.
  */
@@ -16,7 +39,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8081');
 app.set('port', port);
 
 /**
