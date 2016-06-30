@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 
+
+/*require('babel-core/register')({
+  presets: ['es2015']
+});*/
+/*require('traceur').require.makeDefault(function(filename) {
+  // don't transpile our dependencies, just our app
+  return filename.indexOf('node_modules') === -1;
+}, {
+  annotations: true,
+  arrayComprehension: true,
+  asyncFunctions: true,
+  asyncGenerators: true,
+});*/
+
 /*require("babel-register")({
   presets: [
     'stage-0',
@@ -14,7 +28,7 @@
 //         "polyfill": false,
 //         "regenerator": false
 //       }],
-       "transform-es2015-for-of",
+//       "transform-es2015-for-of",
        "syntax-object-rest-spread",
        "transform-es2015-parameters",
        "transform-object-rest-spread",
@@ -37,8 +51,9 @@ require('ts-node').register({
   //getVersion?: (fileName: string) => string
   //getFileExists?: (fileName: string) => boolean
   compilerOptions: {
+    'module': 'commonjs',
     'experimentalDecorators': true,
-    'target': 'es6'
+    'target': 'ES2015'
   }
 });
 /**
