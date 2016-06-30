@@ -61,10 +61,10 @@ class MyDatabase extends Core {
 
 var myDb = new MyDatabase({host: 'localhost', database: 'houses_test' });
 
-myDb.connect().then(() =>
+myDb.connect().then(async () =>
   {
-    for (var i =0; i <100; i++)
-    myDb.Houses.insert({
+    for (var i =0; i <100000; i++)
+    await myDb.Houses.insert({
         name: 'My House-' + i,
         cars: [{
             make: 'Audi',
@@ -78,6 +78,6 @@ myDb.connect().then(() =>
         house.addCar('Audi', 'S4', { r: 255, g: 255, b: 255 });
         return house.save();
     },err => console.log(err))
-    .then(() =>  true/*myDb.close()*/,err => console.log(err))
+    .then(() => myDb.close(),err => console.log(err))
 
 }
