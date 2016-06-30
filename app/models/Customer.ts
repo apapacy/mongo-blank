@@ -1,6 +1,6 @@
 'use strict';
 import {Core, Model, Instance, Collection, Index, Property, ObjectID} from 'iridium';
-
+export namespace M {
 interface Colour {
     r: number;
     g: number;
@@ -22,7 +22,7 @@ interface HouseDocument {
 
 @Index({ name: 1 })
 @Collection('houses')
-class House extends Instance<HouseDocument, House> implements HouseDocument {
+export class House extends Instance<HouseDocument, House> implements HouseDocument {
     @ObjectID _id: string;
     @Property(/^.+$/)
     name: string;
@@ -63,7 +63,7 @@ var myDb = new MyDatabase({host: 'localhost', database: 'houses_test' });
 
 myDb.connect().then(() =>
   {
-    for (var i =0; i <100000; i++)
+    for (var i =0; i <100; i++)
     myDb.Houses.insert({
         name: 'My House-' + i,
         cars: [{
@@ -79,3 +79,5 @@ myDb.connect().then(() =>
         return house.save();
     },err => console.log(err))
     .then(() =>  true/*myDb.close()*/,err => console.log(err))
+
+}
