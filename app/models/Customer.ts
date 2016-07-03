@@ -1,6 +1,6 @@
 'use strict';
 import {Core, Model, Instance, Collection, Index, Property, ObjectID} from 'iridium';
-export namespace M {
+export namespace app.models {
 interface Colour {
     r: number;
     g: number;
@@ -79,5 +79,4 @@ myDb.connect().then(async () =>
         return house.save();
     },err => console.log(err))
     .then(() => myDb.close(),err => console.log(err))
-
 }

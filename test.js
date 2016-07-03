@@ -1,3 +1,14 @@
+require('traceur').require.makeDefault(function(filename) {
+  // don't transpile our dependencies, just our app
+  return filename.indexOf('node_modules') === -1;
+}, {
+  annotations: true,
+  arrayComprehension: true,
+  asyncFunctions: true,
+  asyncGenerators: true,
+});
+
+
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var fs = require('fs');
@@ -24,14 +35,29 @@ MongoClient.connect(url, function(err, db) {
     });
   }
   }
-  db.collection('sities').mapReduce(
+  db.collection('cities').find({Name: 'Харьков-1'}).forEach(function(city){
+    console.log(city.Code)
+    db.collection('streets').find({CityCode: "100000000"}).toArray(function (error, data){
+      for (var i in data)
+      console.log(data[i])
+    });
+  })
+  /*db.collection('cities').mapReduce(
     function(){
+      var name = this.Name;
+        db.collection('streets').find({CityCode: this.Code}).forEach(function(street){
+        street.CityName = name
+        emit(street.Name, street)
+      })
       emit('1',{count:2})},
     function(key, values) {
-       return 16;
+       return values[0];
     },
-    {out: {inline: 1}}
-, function(err, data){if (err) console.log(err); else {console.log('+++++');console.log(data);}});
+    {
+      out: {inline: 1},
+      query: {Name: 'Харьков'}
+    }
+, function(err, data){if (err) console.log(err); else {console.log('+++++');console.log(data);}});*/
   //insertDocuments(db, function(){    });
 });
 console.log('456')
