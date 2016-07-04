@@ -1,2 +1,2 @@
-import {app}  from '../index.ts'
+import {app}  from '../../app/index.ts'
 console.log(app)
