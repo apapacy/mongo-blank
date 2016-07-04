@@ -1,4 +1,1 @@
-import {models} from './models';
-export const app = {
-    models
-};
+export * from './models';

@@ -1,6 +1,4 @@
-import {House} from './House';
-import {Models} from './Models';
-export const models = {
-  House,
-  Models
-}
+declare var exports: any;
+export * from './House';
+export * from './Models';
+export const models = (exports);
