@@ -1,0 +1,40 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '290342871317094',
+      xfbml: true,
+      version: 'v2.6',
+      oauth : true
+    });
+
+
+
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function testLogin() {
+    FB.login(function(res) {
+      console.log(res);
+      // Note: The call will only work if you accept the permission request
+      FB.api('/' + res.authResponse.userID + '/photos?type=uploaded', 'get', {
+        message: 'Hello, world!'
+      }, function(responce){console.log(responce)});
+    }, {
+      perms: 'user_photos,email',
+      scope: 'user_photos,email',
+    });
+
+
+  }
+</script>
+<input type=button onclick="testLogin();">
