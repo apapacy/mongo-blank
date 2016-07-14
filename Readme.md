@@ -18,3 +18,6 @@ require('ts-node').register({
     'target': 'es6'
   }
 });
+
+
+npm install app-module-path --save

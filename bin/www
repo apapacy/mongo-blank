@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require('app-module-path').addPath(__dirname + '/../app');
+
 
 /*require('babel-core/register')({
   presets: ['es2015']

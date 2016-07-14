@@ -1,2 +1,3 @@
-import * as app  from '../../app'
-console.log(app)
+declare function require(name:string);
+let express = require('./express.js')
+console.log(express)
